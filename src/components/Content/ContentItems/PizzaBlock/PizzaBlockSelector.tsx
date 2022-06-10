@@ -48,8 +48,6 @@ export const PizzablockSelector: FC<ISelector> = ({ types, sizes }) => {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  // const typeNames = ['тонкое', 'традиционное'];
-
   return (
     <>
       <PizzablockSelectorStyled>

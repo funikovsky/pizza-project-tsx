@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../../redux/hooks/hook';
 import { ISort, setSort } from '../../../../redux/slice/pizzaSlice';
+import { sortList } from '../../../../common/constans';
 
 const SortPopUpStyled = styled.div`
   position: absolute;
@@ -29,12 +30,6 @@ interface SortPopUpProps {
 }
 
 export const SortPopUp: FC<SortPopUpProps> = ({ visible, handleSetVisible }) => {
-  const sortList = [
-    { name: 'Популярности', sortProperty: 'raiting' },
-    { name: 'Цене', sortProperty: 'price' },
-    { name: 'Алфавиту', sortProperty: 'title' },
-  ];
-
   const dispatch = useAppDispatch();
 
   const handleClickPopUp = (obj: ISort) => {

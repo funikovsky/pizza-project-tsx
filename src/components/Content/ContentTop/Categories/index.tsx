@@ -27,6 +27,7 @@ interface CategoriesProps {
 
 export const Categories: FC<CategoriesProps> = ({ activeCategory }) => {
   const dispatch = useAppDispatch();
+
   return (
     <CategoriesStyled>
       <ul>

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, isAnyOf, PayloadAction } from '@reduxjs/toolkit'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 export interface Ipizza {
     id: number,
@@ -17,6 +17,7 @@ interface InitialState {
     data: Array<Ipizza>
     activeCategory: number
     sort: ISort
+    loading: boolean
 }
 
 export interface ISort {
@@ -32,7 +33,8 @@ const initialState: InitialState = {
     sort:  { 
         name: 'Популярности', 
         sortProperty: 'raiting' 
-    }
+    },
+    loading: false /*status: loading --- success --- error*/
 }
 
 export const PizzaSlice = createSlice({
@@ -52,39 +54,33 @@ export const PizzaSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addMatcher (isAnyOf(getPizzas.pending), (state, action) => {
-            console.log('Pending ---- ok')
+            state.loading = true
+            console.log(action.meta.requestStatus)
         })
         .addMatcher(isAnyOf(getPizzas.fulfilled), (state, action) => {
-            console.log('Fulfilled ---- ok')
-            state.data = action.payload.data
-            console.log(state.data)
+            console.log(action.meta.requestStatus)
+            state.loading = false
+            state.data = action.payload
+            
         } )
         .addMatcher(isAnyOf(getPizzas.rejected), (state, action) => {
 
-           console.log(action.payload)
+            state.loading = false
+            console.log(action.payload)
         })
     }
 })
 
 //  -------------------------------------возвращаем--принимаем---ошибка--- 
-export const getPizzas = createAsyncThunk<InitialState, void, {rejectValue:string}> (
-    'get/pizzas', 
+export const getPizzas = createAsyncThunk<Array<Ipizza>, void, {rejectValue:string}> (
+    'pizzas/getPizzas', 
     async (_, {rejectWithValue}) => {
-        try {
-            let newState = {}
-            await axios
-            .get(`https://628f53f70e69410599da6666.mockapi.io/items`)
-            .then((res) => {
-                const data = res.data
-                newState = {data}
-
-            } )
-           
-            return newState as InitialState
-     
-        }catch(e: any) {
-            return rejectWithValue(e.message)
-        }
+            
+        const res = await axios.get(`https://628f53f70e69410599da6666.mockapi.io/items`)
+        .then((res) => res.data)
+        .catch((error: AxiosError)=> rejectWithValue(`Ошибка загрузки данных: ${error.response?.status}`))
+                     
+        return res
     }
 )
 
