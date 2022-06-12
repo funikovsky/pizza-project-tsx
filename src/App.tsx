@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from './redux/hooks/hook';
 import { getPizzas } from './redux/slice/pizzaSlice';
 import { Route, Routes } from 'react-router-dom';
+
 import { Cart } from './components/Cart';
 
 function App() {

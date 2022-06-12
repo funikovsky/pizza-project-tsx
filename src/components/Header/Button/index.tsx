@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartSvg } from '../../../assets/svg/CartSvg';
+import { useAppSelector } from '../../../redux/hooks/hook';
 import { ButtonStyled } from '../../ButtonStyled';
 
 const ButtonDelimiliter = styled.div`
@@ -12,14 +13,15 @@ const ButtonDelimiliter = styled.div`
 `;
 
 export const Button = () => {
+  const { totalPizzas, totalPrice } = useAppSelector((state) => state.cart);
   return (
     <>
       <ButtonStyled>
         <Link to="/cart">
-          <span>520 ₽</span>
+          <span>{totalPrice} ₽</span>
           <ButtonDelimiliter />
           <CartSvg />
-          <span>3</span>
+          <span>{totalPizzas}</span>
         </Link>
       </ButtonStyled>
     </>

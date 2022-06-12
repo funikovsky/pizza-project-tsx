@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { typeNames } from '../../../../common/constans';
 
 const PizzablockSelectorStyled = styled.div`
@@ -42,11 +42,23 @@ const CustomLi = styled.li<{ active: boolean }>`
 interface ISelector {
   types: Array<number>;
   sizes: Array<number>;
+  activeType: number;
+  activeSize: number;
+  setActiveType: (type: number) => void;
+  setActiveSize: (size: number) => void;
 }
 
-export const PizzablockSelector: FC<ISelector> = ({ types, sizes }) => {
-  const [activeType, setActiveType] = useState(0);
-  const [activeSize, setActiveSize] = useState(0);
+export const PizzablockSelector: FC<ISelector> = ({
+  types,
+  sizes,
+  setActiveType,
+  activeType,
+  setActiveSize,
+  activeSize,
+}) => {
+  const handleClickAddButton = (type: number) => {
+    setActiveType(type);
+  };
 
   return (
     <>
@@ -56,7 +68,7 @@ export const PizzablockSelector: FC<ISelector> = ({ types, sizes }) => {
             <CustomLi
               active={activeType === type ? true : false}
               key={type}
-              onClick={() => setActiveType(type)}>
+              onClick={() => handleClickAddButton(type)}>
               {typeNames[type]}
             </CustomLi>
           ))}

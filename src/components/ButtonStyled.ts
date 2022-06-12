@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
-export const ButtonStyled = styled.div`
+export const ButtonStyled = styled.div<{mb?:string}>`
 
   display: flex;
+  margin-bottom: ${props => (props.mb + 'px')} ;
   & a {
     display: flex;
-
-    
     align-items: center;
     line-height: 23px;
     padding: 12px 25px;

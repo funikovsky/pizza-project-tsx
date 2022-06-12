@@ -1,77 +1,39 @@
-import styled from 'styled-components';
 import { FC } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook';
+import { sumTotalPrice } from '../../../../redux/slice/cartSlice';
 
-const PizzaBlockBottomStyled = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  .pizza-block__price {
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 27px;
-    letter-spacing: 0.015em;
-  }
-  .button--add {
-    display: inline-block;
-    background-color: #fff;
-    border-radius: 30px;
-    padding: 10px 20px;
-    min-width: 100px;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-color: #fe5f1e;
-    user-select: none;
-    color: #fe5f1e;
-    &:hover {
-      background-color: #fe5f1e;
-      span {
-        color: #fff;
-      }
-      i {
-        background-color: #fff;
-        color: #fe5f1e;
-      }
-    }
-  }
-  span {
-    color: #fe5f1e;
+import { Ipizza } from '../../../../redux/slice/pizzaSlice';
+import { PizzaBlockBottomStyled } from './PizzaaBlockBottomStyled';
 
-    &:first-of-type {
-      margin-right: 6px;
-      font-weight: bold;
-    }
-  }
+type BottomProps = { pizzaItem: Ipizza; addSelectedItem: () => void };
 
-  i {
-    display: inline-block;
-    border-radius: 30px;
-    background-color: #fe5f1e;
-    color: #fff;
-    font-weight: 600;
-    width: 22px;
-    height: 22px;
-    font-style: normal;
-    font-size: 13px;
-    line-height: 22px;
-    position: relative;
-    top: -1px;
-    left: 3px;
-  }
-`;
+export const PizzaBlockBottom: FC<BottomProps> = ({ pizzaItem, addSelectedItem }) => {
+  const { price, id } = pizzaItem;
+  const dispatch = useAppDispatch();
 
-type BottomProps = { price: number };
+  const filteredClick = useAppSelector((state) =>
+    state.cart.dataCart.filter((item) => item.id === id),
+  );
 
-export const PizzaBlockBottom: FC<BottomProps> = ({ price }) => {
+  const count = filteredClick.reduce((accum, obj) => {
+    accum = accum + obj.count;
+    return accum;
+  }, 0);
+
+  const handlerClickButton = () => {
+    addSelectedItem();
+
+    dispatch(sumTotalPrice(price));
+  };
+
   return (
     <>
       <PizzaBlockBottomStyled>
         <div className="pizza-block__price">{price} ₽</div>
-        <div className="button--add">
+        <div className="button--add" onClick={handlerClickButton}>
           <span>+</span>
           <span>Добавить</span>
-          <i>2</i>
+          {count > 0 && <i>{count}</i>}
         </div>
       </PizzaBlockBottomStyled>
     </>

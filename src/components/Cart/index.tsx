@@ -1,23 +1,26 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonStyled } from '../ButtonStyled';
+import { useAppSelector } from '../../redux/hooks/hook';
+
+import { CartItem } from './CartItem';
+import { CartTitle } from './CartTitle';
 
 const CartStyled = styled.div`
   min-height: 500px;
-  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+
   font-size: 36px;
-  padding: 40px;
+  padding: 40px 0;
 `;
 
 export const Cart = () => {
+  const dataCart = useAppSelector((state) => state.cart.dataCart);
   return (
     <CartStyled>
-      <ButtonStyled>
-        <Link to="/">
-          <span>На главную</span>
-        </Link>
-      </ButtonStyled>
-      <div>Здесь будет корзина с выбранными товарами</div>
+      <CartTitle />
+      {dataCart.map((cartObj, index) => (
+        <CartItem key={index} cartObj={cartObj} />
+      ))}
     </CartStyled>
   );
 };
