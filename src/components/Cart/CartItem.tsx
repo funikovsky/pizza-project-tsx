@@ -1,8 +1,17 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { DeleteSvg } from '../../assets/svg/DeleteSvg';
 import { typeNames } from '../../common/constans';
 import { useAppDispatch } from '../../redux/hooks/hook';
-import { addItemToCart, deleteItemCart, ItemCart } from '../../redux/slice/cartSlice';
+import {
+  addItemToCart,
+  deleteItemCart,
+  deleteSelectedItem,
+  getTotalPizzas,
+  getTotalPrice,
+  ItemCart,
+  sumTotalPrice,
+} from '../../redux/slice/cartSlice';
 import { ButtonCart } from './ButtonCart';
 
 const CartItemStyled = styled.div`
@@ -54,6 +63,17 @@ export const CartItem: FC<CartItemProps> = ({ cartObj }) => {
   const itemProperties = itemPropertyId.split('');
   const itemNameId = itemProperties[0];
 
+  const hahdlerClickButtonCart = () => {
+    dispatch(addItemToCart(cartObj));
+    dispatch(sumTotalPrice(price));
+  };
+
+  const handleClickDeleteBtoon = () => {
+    dispatch(deleteSelectedItem({ id, itemPropertyId, price }));
+    dispatch(getTotalPrice());
+    dispatch(getTotalPizzas());
+  };
+
   return (
     <CartItemStyled>
       <ItemInfoStyled>
@@ -69,7 +89,7 @@ export const CartItem: FC<CartItemProps> = ({ cartObj }) => {
         </ItemPropertiesStyled>
       </ItemInfoStyled>
       <ItemChoiceStyled>
-        <ButtonCart onClick={() => dispatch(addItemToCart(cartObj))}>+</ButtonCart>
+        <ButtonCart onClick={() => hahdlerClickButtonCart()}>+</ButtonCart>
         <span>{count}</span>
         <ButtonCart onClick={() => dispatch(deleteItemCart({ id, itemPropertyId, price }))}>
           -
@@ -78,6 +98,8 @@ export const CartItem: FC<CartItemProps> = ({ cartObj }) => {
       <CartItemPrice>
         <span>{price * count}p</span>
       </CartItemPrice>
+
+      <DeleteSvg handleClick={() => handleClickDeleteBtoon()} />
     </CartItemStyled>
   );
 };
