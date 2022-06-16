@@ -1,15 +1,14 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const ButtonStyled = styled.div<{mb?:string}>`
-
+export const ButtonStyled = styled.div<{ mb?: string; bgColor?: string }>`
   display: flex;
-  margin-bottom: ${props => (props.mb + 'px')} ;
+  margin-bottom: ${(props) => props.mb + 'px'};
   & a {
     display: flex;
     align-items: center;
     line-height: 23px;
     padding: 12px 25px;
-    background-color: #fe5f1e;
+    background-color: ${(props) => (props.bgColor ? props.bgColor : '#fe5f1e ')};
     border-radius: 30px;
     text-align: center;
     cursor: pointer;
@@ -22,7 +21,10 @@ export const ButtonStyled = styled.div<{mb?:string}>`
     font-size: 16px;
     color: #fff;
   }
-  & :hover {
+  & a:hover {
     background-color: #f24701;
+  }
+  svg {
+    margin-right: 10px;
   }
 `;

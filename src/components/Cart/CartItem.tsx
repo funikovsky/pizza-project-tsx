@@ -18,9 +18,11 @@ const CartItemStyled = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 15px 0;
+  border-bottom: 1px solid #f6f6f6;
 `;
 const ItemInfoStyled = styled.div`
   display: flex;
+  min-width: 410px;
 
   font-size: 24px;
   align-items: center;
@@ -50,6 +52,7 @@ const ItemPropertiesStyled = styled.div`
 `;
 
 const CartItemPrice = styled.div`
+  min-width: 120px;
   align-self: center;
 `;
 

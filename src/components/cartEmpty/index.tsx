@@ -31,7 +31,7 @@ export const CartEmpty: FC = () => {
         <CartEmptySvg />
         <ButtonStyled>
           <Link to="/">
-            <span>Вернуться назад</span>
+            <span>Выбрать пиццу</span>
           </Link>
         </ButtonStyled>
       </CartEmptyStyled>

@@ -82,6 +82,12 @@ export const CartSlice = createSlice({
         return total;
       }, 0);
     },
+
+    cartClear: (state) => {
+      state.dataCart = [];
+      state.totalPizzas = 0;
+      state.totalPrice = 0;
+    },
   },
 });
 
@@ -92,5 +98,6 @@ export const {
   deleteSelectedItem,
   getTotalPrice,
   getTotalPizzas,
+  cartClear,
 } = CartSlice.actions;
 export default CartSlice.reducer;
