@@ -54,7 +54,7 @@ export const PizzaBlock: FC<IPizzaBlock> = ({ pizzaItem }) => {
         setActiveType={(type: number) => setActiveType(type)}
         setActiveSize={(size: number) => setActiveSize(size)}
       />
-      <PizzaBlockBottom pizzaItem={pizzaItem} addSelectedItem={addSelectedItem} />
+      <PizzaBlockBottom pizzaItem={pizzaItem} addSelectedItem={() => addSelectedItem()} />
     </PizzaBlockStyled>
   );
 };

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useAppSelector } from '../../redux/hooks/hook';
+import { CartEmpty } from '../cartEmpty';
 
 import { CartItem } from './CartItem';
 import { CartTitle } from './CartTitle';
@@ -15,6 +16,10 @@ const CartStyled = styled.div`
 
 export const Cart = () => {
   const dataCart = useAppSelector((state) => state.cart.dataCart);
+
+  if (!dataCart.length) {
+    return <CartEmpty />;
+  }
   return (
     <CartStyled>
       <CartTitle />

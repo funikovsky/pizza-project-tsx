@@ -22,19 +22,19 @@ export const PizzaBlockBottom: FC<BottomProps> = ({ pizzaItem, addSelectedItem }
 
   const handlerClickButton = () => {
     addSelectedItem();
-
     dispatch(sumTotalPrice(price));
+    console.log(count);
   };
 
   return (
     <>
       <PizzaBlockBottomStyled>
-        <div className="pizza-block__price">{price} ₽</div>
-        <div className="button--add" onClick={handlerClickButton}>
+        <span> {price} ₽</span>
+        <button onClick={() => handlerClickButton()}>
           <span>+</span>
           <span>Добавить</span>
           {count > 0 && <i>{count}</i>}
-        </div>
+        </button>
       </PizzaBlockBottomStyled>
     </>
   );
