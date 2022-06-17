@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartSvg } from '../../../assets/svg/CartSvg';
@@ -13,7 +14,18 @@ const ButtonDelimiliter = styled.div`
 `;
 
 export const Button = () => {
-  const { totalPizzas, totalPrice } = useAppSelector((state) => state.cart);
+  const { totalPizzas, totalPrice, dataCart } = useAppSelector((state) => state.cart);
+
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const dataJson = JSON.stringify(dataCart);
+      localStorage.setItem('cart', dataJson);
+    }
+    isMounted.current = true;
+  }, [dataCart]);
+
   return (
     <>
       <ButtonStyled>

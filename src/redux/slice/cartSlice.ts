@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getDataCartLocalS } from '../../utils/getDataCartLS';
+import { getTotalPriceFunc } from '../../utils/getTotal';
 
 export interface ItemCart {
   id: number;
@@ -17,9 +19,9 @@ interface IDataCart {
 }
 
 const initialState: IDataCart = {
-  dataCart: [],
-  totalPizzas: 0,
-  totalPrice: 0,
+  dataCart: getDataCartLocalS().data,
+  totalPizzas: getDataCartLocalS().totalPizzas,
+  totalPrice: getDataCartLocalS().totalPrice,
 };
 
 export const CartSlice = createSlice({
@@ -71,10 +73,7 @@ export const CartSlice = createSlice({
       findIndex !== -1 && state.dataCart.splice(findIndex, 1);
     },
     getTotalPrice: (state) => {
-      state.totalPrice = state.dataCart.reduce((total, item) => {
-        total += item.price * item.count;
-        return total;
-      }, 0);
+      state.totalPrice = getTotalPriceFunc(state.dataCart);
     },
     getTotalPizzas: (state) => {
       state.totalPizzas = state.dataCart.reduce((total, item) => {

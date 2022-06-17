@@ -15,6 +15,7 @@ const ContentItemsStyled = styled.div`
 export const ContentItems = () => {
   const pizzaItems = useAppSelector((state) => state.pizzas.data);
   const visible = useAppSelector((state) => state.pizzas.loading);
+
   return (
     <ContentItemsStyled>
       {visible && <Sceleton />}
