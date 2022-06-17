@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ArrowSvg } from '../../assets/svg/arrowSvg';
@@ -25,7 +26,7 @@ const CartStyled = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Cart = () => {
+export const Cart: FC = () => {
   const { dataCart, totalPizzas, totalPrice } = useAppSelector((state) => state.cart);
 
   if (!dataCart.length) {

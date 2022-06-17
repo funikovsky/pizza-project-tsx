@@ -2,12 +2,17 @@ import { Container } from './components/container';
 import { Content } from './components/Content';
 import { Header } from './components/Header';
 import { Wrapper } from './components/wrapper';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useAppDispatch } from './redux/hooks/hook';
 import { getPizzas } from './redux/slice/pizzaAsyncThunk';
 import { Route, Routes } from 'react-router-dom';
+import { Spinner } from './components/spinners/spinner';
 
-import { Cart } from './components/Cart';
+const Cart = lazy(() =>
+  import(/*webpackChunkName: "Cart" */ './components/Cart').then((module) => ({
+    default: module.Cart,
+  })),
+);
 
 function App() {
   const dispatch = useAppDispatch();
@@ -23,7 +28,14 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Content />} />
-            <Route path="cart" element={<Cart />} />
+            <Route
+              path="cart"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Cart />
+                </Suspense>
+              }
+            />
           </Routes>
         </Container>
       </Wrapper>
