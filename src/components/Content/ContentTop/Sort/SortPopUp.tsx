@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../../redux/hooks/hook';
-import { ISort, setSort } from '../../../../redux/slice/pizzaSlice';
+import { setSort } from '../../../../redux/slice/pizzaSlice';
 import { sortList } from '../../../../common/constans';
+import { ISort } from '../../../../common/types';
 
 const SortPopUpStyled = styled.div`
   position: absolute;

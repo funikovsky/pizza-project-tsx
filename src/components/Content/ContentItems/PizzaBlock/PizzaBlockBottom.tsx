@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook';
 import { sumTotalPrice } from '../../../../redux/slice/cartSlice';
-
-import { Ipizza } from '../../../../redux/slice/pizzaSlice';
+import { Ipizza } from '../../../../common/types';
 import { PizzaBlockBottomStyled } from './PizzaaBlockBottomStyled';
 
 type BottomProps = { pizzaItem: Ipizza; addSelectedItem: () => void };

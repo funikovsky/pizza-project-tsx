@@ -1,4 +1,4 @@
-import { ItemCart } from '../redux/slice/cartSlice';
+import { ItemCart } from '../common/types';
 
 export const getTotalPriceFunc = (arr: Array<ItemCart>) => {
   return arr.reduce((total, item) => {

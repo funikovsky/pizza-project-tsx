@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { FC, useState } from 'react';
-
-import { Ipizza } from '../../../../redux/slice/pizzaSlice';
-
+import { Ipizza } from '../../../../common/types';
 import { PizzaBlockBottom } from './PizzaBlockBottom';
 import { PizzablockSelector } from './PizzaBlockSelector';
 import { useAppDispatch } from '../../../../redux/hooks/hook';

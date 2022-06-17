@@ -1,22 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IDataCart } from '../../common/types';
 import { getDataCartLocalS } from '../../utils/getDataCartLS';
 import { getTotalPriceFunc } from '../../utils/getTotal';
-
-export interface ItemCart {
-  id: number;
-  itemPropertyId: string;
-  count: number;
-  imageUrl: string;
-  title: string;
-  price: number;
-  size: number;
-}
-
-interface IDataCart {
-  dataCart: Array<ItemCart>;
-  totalPizzas: number;
-  totalPrice: number;
-}
 
 const initialState: IDataCart = {
   dataCart: getDataCartLocalS().data,

@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { DeleteSvg } from '../../assets/svg/DeleteSvg';
 import { typeNames } from '../../common/constans';
+import { ItemCart } from '../../common/types';
 import { useAppDispatch } from '../../redux/hooks/hook';
 import {
   addItemToCart,
@@ -9,7 +10,6 @@ import {
   deleteSelectedItem,
   getTotalPizzas,
   getTotalPrice,
-  ItemCart,
   sumTotalPrice,
 } from '../../redux/slice/cartSlice';
 import { ButtonCart } from './ButtonCart';
