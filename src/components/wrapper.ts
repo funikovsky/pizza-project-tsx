@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: calc(100vw - 100px);
@@ -7,5 +7,7 @@ export const Wrapper = styled.div`
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
-
-`
+  @media (max-width: 540px) {
+    width: calc(100vw - 40px);
+  }
+`;

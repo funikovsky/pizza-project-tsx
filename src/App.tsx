@@ -7,6 +7,7 @@ import { useAppDispatch } from './redux/hooks/hook';
 import { getPizzas } from './redux/slice/pizzaAsyncThunk';
 import { Route, Routes } from 'react-router-dom';
 import { Spinner } from './components/spinners/spinner';
+import { NotFoundBlock } from './components/NotFoundBlock';
 
 const CartLazy = lazy(() =>
   import(/*webpackChunkName: "Cart" */ './components/Cart').then((module) => ({
@@ -36,6 +37,7 @@ function App() {
                 </Suspense>
               }
             />
+            <Route path="*" element={<NotFoundBlock />} />
           </Routes>
         </Container>
       </Wrapper>

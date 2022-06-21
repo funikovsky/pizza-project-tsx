@@ -11,6 +11,7 @@ const CartTitleStyled = styled.div`
   margin-bottom: 25px;
   border-bottom: 1px solid #f6f6f6;
   justify-content: space-between;
+  flex-wrap: wrap;
   & > div {
     display: flex;
     align-items: center;

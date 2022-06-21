@@ -2,8 +2,8 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 const DeleteSvgStyled = styled.div`
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   align-self: center;
   cursor: pointer;
 `;

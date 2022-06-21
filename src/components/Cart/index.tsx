@@ -19,6 +19,8 @@ const CartContainer = styled.div`
     opacity: 0.7;
     margin-bottom: 40px;
   }
+  @media (max-width: 540px) {
+  }
 `;
 
 const CartStyled = styled.div`

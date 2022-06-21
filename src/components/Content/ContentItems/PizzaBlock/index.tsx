@@ -47,9 +47,7 @@ export const PizzaBlock: FC<IPizzaBlock> = ({ pizzaItem }) => {
       console.log('onSubmit');
       addSelectedItem();
     },
-    initialValues: {
-      type: 0,
-    },
+    initialValues: {},
   });
 
   return (
