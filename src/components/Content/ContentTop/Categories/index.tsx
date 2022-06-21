@@ -1,12 +1,14 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styled from 'styled-components';
 import { categories } from '../../../../common/constans';
-import { useAppDispatch } from '../../../../redux/hooks/hook';
-import { setActiveCategory } from '../../../../redux/slice/pizzaSlice';
 
 const CategoriesStyled = styled.div`
   ul {
     display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
   }
 `;
 const CustomLI = styled.li<{ active: boolean }>`
@@ -14,19 +16,15 @@ const CustomLI = styled.li<{ active: boolean }>`
   color: ${(props) => (props.active ? '#f9f9f9' : '#000')};
   padding: 13px 30px;
   border-radius: 30px;
-  margin-right: 10px;
+
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
   user-select: none;
 `;
 
-interface CategoriesProps {
-  activeCategory: number;
-}
-
-export const Categories: FC<CategoriesProps> = ({ activeCategory }) => {
-  const dispatch = useAppDispatch();
+export const Categories: FC = () => {
+  const [activeCategory, setActiveCategory] = useState(0);
 
   return (
     <CategoriesStyled>
@@ -35,7 +33,7 @@ export const Categories: FC<CategoriesProps> = ({ activeCategory }) => {
           <CustomLI
             active={activeCategory === index ? true : false}
             key={index}
-            onClick={() => dispatch(setActiveCategory(index))}>
+            onClick={() => setActiveCategory(index)}>
             {category}
           </CustomLI>
         ))}

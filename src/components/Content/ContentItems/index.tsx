@@ -7,9 +7,10 @@ import { PizzaBlock } from './PizzaBlock';
 const ContentItemsStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding: 30px 0;
   row-gap: 65px;
+  column-gap: 30px;
 `;
 
 export const ContentItems = () => {

@@ -18,6 +18,11 @@ const HeaderLogoStyled = styled.div`
       color: #7b7b7b;
     }
   }
+  @media (max-width: 678px) {
+    p {
+      max-width: 150px;
+    }
+  }
 `;
 
 export const HeaderLogo = () => {

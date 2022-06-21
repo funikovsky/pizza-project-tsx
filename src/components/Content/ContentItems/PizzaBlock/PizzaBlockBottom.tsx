@@ -1,14 +1,13 @@
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook';
-import { sumTotalPrice } from '../../../../redux/slice/cartSlice';
+import { useAppSelector } from '../../../../redux/hooks/hook';
+
 import { Ipizza } from '../../../../common/types';
 import { PizzaBlockBottomStyled } from './PizzaaBlockBottomStyled';
 
-type BottomProps = { pizzaItem: Ipizza; addSelectedItem: () => void };
+type BottomProps = { pizzaItem: Ipizza };
 
-export const PizzaBlockBottom: FC<BottomProps> = ({ pizzaItem, addSelectedItem }) => {
+export const PizzaBlockBottom: FC<BottomProps> = ({ pizzaItem }) => {
   const { price, id } = pizzaItem;
-  const dispatch = useAppDispatch();
 
   const filteredClick = useAppSelector((state) =>
     state.cart.dataCart.filter((item) => item.id === id),
@@ -19,17 +18,11 @@ export const PizzaBlockBottom: FC<BottomProps> = ({ pizzaItem, addSelectedItem }
     return accum;
   }, 0);
 
-  const handlerClickButton = () => {
-    addSelectedItem();
-    dispatch(sumTotalPrice(price));
-    console.log(count);
-  };
-
   return (
     <>
       <PizzaBlockBottomStyled>
         <span> {price} ₽</span>
-        <button onClick={() => handlerClickButton()}>
+        <button type="submit">
           <span>+</span>
           <span>Добавить</span>
           {count > 0 && <i>{count}</i>}

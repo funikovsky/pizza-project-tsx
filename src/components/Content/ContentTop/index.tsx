@@ -1,21 +1,20 @@
 import styled from 'styled-components';
-import { useAppSelector } from '../../../redux/hooks/hook';
 import { Categories } from './Categories';
 import { Sort } from './Sort';
 const ContentTopStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 30px 0;
+  row-gap: 20px;
 `;
 
 export const ContentTop = () => {
-  const activeCategory = useAppSelector((state) => state.pizzas.activeCategory);
-
   return (
     <>
       <ContentTopStyled>
-        <Categories activeCategory={activeCategory} />
+        <Categories />
         <Sort />
       </ContentTopStyled>
     </>

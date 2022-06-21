@@ -4,7 +4,8 @@ import { Ipizza } from '../../../../common/types';
 import { PizzaBlockBottom } from './PizzaBlockBottom';
 import { PizzablockSelector } from './PizzaBlockSelector';
 import { useAppDispatch } from '../../../../redux/hooks/hook';
-import { addItemToCart } from '../../../../redux/slice/cartSlice';
+import { addItemToCart, sumTotalPrice } from '../../../../redux/slice/cartSlice';
+import { useFormik } from 'formik';
 
 const PizzaBlockStyled = styled.div`
   width: 280px;
@@ -38,21 +39,35 @@ export const PizzaBlock: FC<IPizzaBlock> = ({ pizzaItem }) => {
     };
 
     dispatch(addItemToCart(itemCart));
+    dispatch(sumTotalPrice(price));
   };
+
+  const formik = useFormik({
+    onSubmit: () => {
+      console.log('onSubmit');
+      addSelectedItem();
+    },
+    initialValues: {
+      type: 0,
+    },
+  });
 
   return (
     <PizzaBlockStyled>
       <img src={imageUrl} alt="Pizza" />
       <h4>{title}</h4>
-      <PizzablockSelector
-        types={types}
-        sizes={sizes}
-        activeType={activeType}
-        activeSize={activeSize}
-        setActiveType={(type: number) => setActiveType(type)}
-        setActiveSize={(size: number) => setActiveSize(size)}
-      />
-      <PizzaBlockBottom pizzaItem={pizzaItem} addSelectedItem={() => addSelectedItem()} />
+      <form onSubmit={formik.handleSubmit}>
+        <PizzablockSelector
+          types={types}
+          sizes={sizes}
+          id={id}
+          activeType={activeType}
+          activeSize={activeSize}
+          setActiveType={(type: number) => setActiveType(type)}
+          setActiveSize={(size: number) => setActiveSize(size)}
+        />
+        <PizzaBlockBottom pizzaItem={pizzaItem} />
+      </form>
     </PizzaBlockStyled>
   );
 };

@@ -8,7 +8,7 @@ import { getPizzas } from './redux/slice/pizzaAsyncThunk';
 import { Route, Routes } from 'react-router-dom';
 import { Spinner } from './components/spinners/spinner';
 
-const Cart = lazy(() =>
+const CartLazy = lazy(() =>
   import(/*webpackChunkName: "Cart" */ './components/Cart').then((module) => ({
     default: module.Cart,
   })),
@@ -32,7 +32,7 @@ function App() {
               path="cart"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <Cart />
+                  <CartLazy />
                 </Suspense>
               }
             />
