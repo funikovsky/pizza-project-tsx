@@ -12,6 +12,7 @@ const initialState: IDataCart = {
 export const CartSlice = createSlice({
   name: 'cart',
   initialState,
+
   reducers: {
     addItemToCart: (state, action) => {
       const findItem = state.dataCart.find(
