@@ -19,7 +19,8 @@ export const ContentItems = () => {
 
   return (
     <ContentItemsStyled>
-      {visible && <Sceleton />}
+      {visible === 'loading' && <Sceleton />}
+
       {pizzaItems.map((pizzaItem) => (
         <PizzaBlock key={pizzaItem.id} pizzaItem={pizzaItem} />
       ))}

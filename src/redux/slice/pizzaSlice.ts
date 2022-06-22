@@ -10,7 +10,7 @@ const initialState: IPizzaState = {
     name: 'Сначала популярные',
     sortProperty: 'rating&order=desc',
   },
-  loading: false /*status: loading --- success --- error*/,
+  loading: 'loading' /*status: loading --- success --- error*/,
 };
 
 export const PizzaSlice = createSlice({
@@ -28,16 +28,16 @@ export const PizzaSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(isAnyOf(getPizzas.pending), (state, action) => {
-        state.loading = true;
+        state.loading = 'loading';
         console.log(action.meta.requestStatus);
       })
       .addMatcher(isAnyOf(getPizzas.fulfilled), (state, action) => {
         console.log(action.meta.requestStatus);
-        state.loading = false;
+        state.loading = 'success';
         state.data = action.payload;
       })
       .addMatcher(isAnyOf(getPizzas.rejected), (state, action) => {
-        state.loading = false;
+        state.loading = 'error';
         console.log(action.payload);
       });
   },

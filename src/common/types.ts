@@ -29,7 +29,7 @@ export interface IPizzaState {
   data: Array<Ipizza>;
   activeCategory: number;
   sort: ISort;
-  loading: boolean;
+  loading: string;
 }
 
 export interface ISort {
