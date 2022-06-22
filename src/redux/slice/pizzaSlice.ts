@@ -7,8 +7,8 @@ const initialState: IPizzaState = {
   data: [],
   activeCategory: 0,
   sort: {
-    name: 'Популярности',
-    sortProperty: 'raiting',
+    name: 'Сначала популярные',
+    sortProperty: 'rating&order=desc',
   },
   loading: false /*status: loading --- success --- error*/,
 };
