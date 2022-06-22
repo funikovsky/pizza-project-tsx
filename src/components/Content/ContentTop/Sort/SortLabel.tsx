@@ -5,7 +5,7 @@ import { useAppSelector } from '../../../../redux/hooks/hook';
 const SortLabelStyled = styled.div`
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 300px;
   b {
     margin-right: 10px;
   }

@@ -3,7 +3,7 @@ import { Content } from './components/Content';
 import { Header } from './components/Header';
 import { Wrapper } from './components/wrapper';
 import { lazy, Suspense, useEffect } from 'react';
-import { useAppDispatch } from './redux/hooks/hook';
+import { useAppDispatch, useAppSelector } from './redux/hooks/hook';
 import { getPizzas } from './redux/slice/pizzaAsyncThunk';
 import { Route, Routes } from 'react-router-dom';
 import { Spinner } from './components/spinners/spinner';
@@ -17,10 +17,12 @@ const CartLazy = lazy(() =>
 
 function App() {
   const dispatch = useAppDispatch();
+  const category = useAppSelector((state) => state.pizzas.activeCategory);
+  const sortProperty = useAppSelector((state) => state.pizzas.sort.sortProperty);
 
   useEffect(() => {
-    dispatch(getPizzas());
-  }, [dispatch]);
+    dispatch(getPizzas({ category, sortProperty }));
+  }, [category, sortProperty, dispatch]);
 
   return (
     <>

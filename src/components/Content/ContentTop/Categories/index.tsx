@@ -1,6 +1,8 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 import { categories } from '../../../../common/constans';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook';
+import { setActiveCategory } from '../../../../redux/slice/pizzaSlice';
 
 const CategoriesStyled = styled.div`
   ul {
@@ -24,7 +26,8 @@ const CustomLI = styled.li<{ active: boolean }>`
 `;
 
 export const Categories: FC = () => {
-  const [activeCategory, setActiveCategory] = useState(0);
+  const activeCategory = useAppSelector((state) => state.pizzas.activeCategory);
+  const dispatch = useAppDispatch();
 
   return (
     <CategoriesStyled>
@@ -33,7 +36,7 @@ export const Categories: FC = () => {
           <CustomLI
             active={activeCategory === index ? true : false}
             key={index}
-            onClick={() => setActiveCategory(index)}>
+            onClick={() => dispatch(setActiveCategory(index))}>
             {category}
           </CustomLI>
         ))}
