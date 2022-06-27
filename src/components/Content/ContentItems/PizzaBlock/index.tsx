@@ -8,11 +8,20 @@ import { useFormik } from 'formik';
 import { PizzaBlockSelectorStyled } from './PizzaBlockSelectorStyled';
 import { typeNames } from '../../../../common/constans';
 import { CustomLi } from './CustomLi';
+import { Link } from 'react-router-dom';
+import { clearFullPizza } from '../../../../redux/slice/pizzaSlice';
 
 const PizzaBlockStyled = styled.div`
   width: 280px;
   text-align: center;
+
+  &:hover {
+    img {
+      transform: scale(1.03);
+    }
+  }
   img {
+    transition: all 0.2s;
     width: 100%;
   }
 `;
@@ -54,7 +63,10 @@ export const PizzaBlock: FC<IPizzaBlock> = ({ pizzaItem }) => {
 
   return (
     <PizzaBlockStyled>
-      <img src={imageUrl} alt="Pizza" />
+      <Link to={`/pizza/${id}`}>
+        <img src={imageUrl} alt="Pizza" onClick={() => dispatch(clearFullPizza())} />
+      </Link>
+
       <h4>{title}</h4>
       <form onSubmit={formik.handleSubmit}>
         <PizzaBlockSelectorStyled>

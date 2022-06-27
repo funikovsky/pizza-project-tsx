@@ -14,9 +14,15 @@ const CartLazy = lazy(() =>
     default: module.Cart,
   })),
 );
+const FullPizzaLazy = lazy(() =>
+  import('./components/FullPizza').then((module) => ({
+    default: module.FullPizza,
+  })),
+);
 
 function App() {
   const dispatch = useAppDispatch();
+
   const category = useAppSelector((state) => state.pizzas.activeCategory);
   const sortProperty = useAppSelector((state) => state.pizzas.sort.sortProperty);
 
@@ -36,6 +42,14 @@ function App() {
               element={
                 <Suspense fallback={<Spinner />}>
                   <CartLazy />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/pizza/:id"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <FullPizzaLazy />
                 </Suspense>
               }
             />

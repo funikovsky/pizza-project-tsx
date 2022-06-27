@@ -4,6 +4,7 @@ export const CustomLi = styled.li`
   width: 100%;
   display: grid;
   column-gap: 4px;
+
   input {
     display: none;
   }
@@ -11,6 +12,10 @@ export const CustomLi = styled.li`
     padding: 8px;
     border: transparent;
     border-radius: 7px;
+    box-shadow: 1px 1px 1px gray;
+    &:active {
+      transform: scale(0.95);
+    }
 
     cursor: pointer;
   }

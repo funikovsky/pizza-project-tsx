@@ -12,16 +12,22 @@ export const getPizzas = createAsyncThunk<Array<Ipizza>, SortAction, { rejectVal
   'pizzas/getPizzas',
   async ({ category, sortProperty }, { rejectWithValue }) => {
     const categoryName = category ? `category=${category}&` : '';
+    const sortName = sortProperty.replace('-', '');
+    const orderName = sortProperty.includes('-') ? 'asc' : 'desc';
 
-    const res = await axios
+    const res: Array<any> = await axios
       .get(
-        `https://628f53f70e69410599da6666.mockapi.io/items?${categoryName}sortBy=${sortProperty}`,
+        `https://628f53f70e69410599da6666.mockapi.io/items?${categoryName}sortBy=${sortName}&order=${orderName}`,
       )
       .then((res) => res.data)
       .catch((error: AxiosError) =>
         rejectWithValue(`Ошибка загрузки данных: ${error.response?.status}`),
       );
 
-    return res;
+    const newRes: Ipizza[] = res.map((obj) => {
+      return { ...obj, id: Number(obj.id) };
+    });
+
+    return newRes;
   },
 );

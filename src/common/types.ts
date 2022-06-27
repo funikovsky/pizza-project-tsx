@@ -30,6 +30,8 @@ export interface IPizzaState {
   activeCategory: number;
   sort: ISort;
   loading: string;
+  fullPizzaById: Ipizza | null;
+  statusFullPizza: string;
 }
 
 export interface ISort {

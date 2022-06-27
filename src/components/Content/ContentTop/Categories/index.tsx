@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import styled from 'styled-components';
 import { categories } from '../../../../common/constans';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook';
@@ -14,15 +15,22 @@ const CategoriesStyled = styled.div`
   }
 `;
 const CustomLI = styled.li<{ active: boolean }>`
-  background-color: ${(props) => (props.active ? '#000' : '#f9f9f9')};
-  color: ${(props) => (props.active ? '#f9f9f9' : '#000')};
+  background-color: ${(props) => (props.active ? '#fe5f1e' : '#f9f9f9')};
+  color: ${(props) => (props.active ? '#fff' : '#000')};
   padding: 13px 30px;
   border-radius: 30px;
-
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1);
   user-select: none;
+  box-shadow: 2px 2px 2px gray;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 export const Categories: FC = () => {
@@ -34,7 +42,7 @@ export const Categories: FC = () => {
       <ul>
         {categories.map((category, index) => (
           <CustomLI
-            active={activeCategory === index ? true : false}
+            active={activeCategory === index}
             key={index}
             onClick={() => dispatch(setActiveCategory(index))}>
             {category}

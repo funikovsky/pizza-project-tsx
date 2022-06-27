@@ -7,7 +7,13 @@ const HeaderLogoStyled = styled.div`
     display: flex;
     align-items: center;
     padding: 20px 0;
+    &:hover {
+      svg {
+        animation: spin 5s linear 0s infinite;
+      }
+    }
     svg {
+      transition: all 0.5s;
       margin-right: 10px;
     }
     h1 {
@@ -18,6 +24,16 @@ const HeaderLogoStyled = styled.div`
       color: #7b7b7b;
     }
   }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   @media (max-width: 678px) {
     p {
       max-width: 150px;
