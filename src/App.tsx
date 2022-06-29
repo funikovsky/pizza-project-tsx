@@ -45,6 +45,7 @@ function App() {
                 </Suspense>
               }
             />
+
             <Route
               path="/pizza/:id"
               element={

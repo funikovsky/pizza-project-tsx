@@ -25,6 +25,7 @@ const CartTitleBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 24px;
+  flex-wrap: wrap;
 
   div {
     display: flex;

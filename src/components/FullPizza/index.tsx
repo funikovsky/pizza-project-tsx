@@ -43,6 +43,7 @@ export const FullPizza = () => {
       dispatch(getPizza(id));
     }
   }, [dispatch, id]);
+
   if (status === 'error') return <NotFoundBlock />;
 
   if (pizzaObj && id) {

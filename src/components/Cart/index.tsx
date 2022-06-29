@@ -1,7 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../../redux/hooks/hook';
+import { ButtonOrder } from '../ButtonOrder';
+
 import { CartEmpty } from '../cartEmpty';
+import { OrderForm } from '../OrderForm';
 import { CartItem } from './CartItem';
 import { CartTitle } from './CartTitle';
 
@@ -25,11 +28,16 @@ const CartStyled = styled.div`
 `;
 
 export const Cart: FC = () => {
+  const [orderVisible, setOrderVisible] = useState(false);
   const { dataCart, totalPizzas, totalPrice } = useAppSelector((state) => state.cart);
 
   if (!dataCart.length) {
     return <CartEmpty />;
   }
+
+  const handleClickOrder = () => {
+    setOrderVisible((prev) => !prev);
+  };
   return (
     <CartContainer>
       <CartTitle />
@@ -41,6 +49,9 @@ export const Cart: FC = () => {
       <span>
         Всего позиций: {totalPizzas}шт. на сумму {totalPrice}р
       </span>
+      <ButtonOrder handleClickOrder={handleClickOrder} />
+
+      <OrderForm orderVisible={orderVisible} handleClickOrder={handleClickOrder} />
     </CartContainer>
   );
 };

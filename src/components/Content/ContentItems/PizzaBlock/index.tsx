@@ -37,7 +37,6 @@ export const PizzaBlock: FC<IPizzaBlock> = ({ pizzaItem }) => {
 
   const formik = useFormik({
     onSubmit: () => {
-      console.log('onSubmit');
       addSelectedItem();
     },
     initialValues: {
