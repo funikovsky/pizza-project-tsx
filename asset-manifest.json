@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/pizza-project-tsx/static/js/main.cbbb4e9e.js",
-    "Cart.js": "/pizza-project-tsx/static/js/Cart.9f6d7262.chunk.js",
-    "static/js/263.c14fa902.chunk.js": "/pizza-project-tsx/static/js/263.c14fa902.chunk.js",
-    "index.html": "/pizza-project-tsx/index.html",
-    "main.cbbb4e9e.js.map": "/pizza-project-tsx/static/js/main.cbbb4e9e.js.map",
-    "Cart.9f6d7262.chunk.js.map": "/pizza-project-tsx/static/js/Cart.9f6d7262.chunk.js.map",
-    "263.c14fa902.chunk.js.map": "/pizza-project-tsx/static/js/263.c14fa902.chunk.js.map"
+    "main.js": "/static/js/main.c9291cbe.js",
+    "Cart.js": "/static/js/Cart.9f6d7262.chunk.js",
+    "static/js/263.c14fa902.chunk.js": "/static/js/263.c14fa902.chunk.js",
+    "index.html": "/index.html",
+    "main.c9291cbe.js.map": "/static/js/main.c9291cbe.js.map",
+    "Cart.9f6d7262.chunk.js.map": "/static/js/Cart.9f6d7262.chunk.js.map",
+    "263.c14fa902.chunk.js.map": "/static/js/263.c14fa902.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.cbbb4e9e.js"
+    "static/js/main.c9291cbe.js"
   ]
 }
