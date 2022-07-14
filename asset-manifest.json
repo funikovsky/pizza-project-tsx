@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/pizza-project-tsx/static/js/main.9782f3d3.js",
-    "Cart.js": "/pizza-project-tsx/static/js/Cart.cd0a22a8.chunk.js",
+    "main.js": "/pizza-project-tsx/static/js/main.85ac5c10.js",
+    "Cart.js": "/pizza-project-tsx/static/js/Cart.6ed2f39a.chunk.js",
     "static/js/263.c14fa902.chunk.js": "/pizza-project-tsx/static/js/263.c14fa902.chunk.js",
     "index.html": "/pizza-project-tsx/index.html",
-    "main.9782f3d3.js.map": "/pizza-project-tsx/static/js/main.9782f3d3.js.map",
-    "Cart.cd0a22a8.chunk.js.map": "/pizza-project-tsx/static/js/Cart.cd0a22a8.chunk.js.map",
+    "main.85ac5c10.js.map": "/pizza-project-tsx/static/js/main.85ac5c10.js.map",
+    "Cart.6ed2f39a.chunk.js.map": "/pizza-project-tsx/static/js/Cart.6ed2f39a.chunk.js.map",
     "263.c14fa902.chunk.js.map": "/pizza-project-tsx/static/js/263.c14fa902.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.9782f3d3.js"
+    "static/js/main.85ac5c10.js"
   ]
 }
